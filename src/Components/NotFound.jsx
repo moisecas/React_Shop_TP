@@ -1,8 +1,12 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div>
+      <Navbar />
+      <p>404 Not Found - Pagina no encontrada</p>  
+    </div>
   )
 }
 
