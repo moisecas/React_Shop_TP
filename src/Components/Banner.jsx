@@ -7,6 +7,7 @@ import slide2 from './assets/banner/2.png'
 
 const Banner = () => {
     
+    
   return (
     <Carousel>
         <Carousel.Item>
@@ -23,8 +24,8 @@ const Banner = () => {
             src={slide2} 
             alt="slide2" />
             <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Slide</h3> 
+                <p>Products</p>
             </Carousel.Caption>
         </Carousel.Item>
     </Carousel>
