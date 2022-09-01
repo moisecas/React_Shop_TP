@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar';
 import NotFound from './Components/NotFound';
 import Cart from './Components/Cart';
 import Profile from './Components/Profile';
+import Products from './Components/AddProduct';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         {/* <Route path="/navbar" element={<Navbar />} />  */} 
         <Route path="/cart" element={<Cart />} /> 
         <Route path="/userprofile" element={<Profile />} />
+        <Route path="/products" element={<Products />} />
 
         <Route path="*" element={<NotFound />} /> {/* * means any other path */}
       </Routes>
