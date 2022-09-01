@@ -1,8 +1,9 @@
 import React, {useState, useEffect, ref} from 'react'
 import Navbar from './Navbar'
 import {auth,db,storage} from '../FirebaseConfigs/FirebaseConfig'
-import {collection, doc, getDocs, query, where} from 'firebase/firestore' 
+import {addDoc, collection, doc, getDocs, query, where} from 'firebase/firestore' 
 import '../CSS/AddProduct.css'
+import { getDownloadURL, uploadBytes } from 'firebase/storage'
 
 
 const AddProduct = () => {
@@ -74,7 +75,24 @@ const AddProduct = () => {
         const storageRef = ref(storage,`product-images${productType.toUpperCase()}
         /${Date.now()}`);    
         console.log(storageRef._location.path); 
+        
+        uploadBytes(storageRef, productImage)
+        .then(()=>{
+            getDownloadURL(storageRef).then(url => {
+              addDoc(collection(db,`products-${productType.toUpperCase()}`),{ 
+              producttitle,
+              productType,
+              description,
+              brand,
+              customerSupport,
+              price,
+              warraty,
+              productImage: url
+              })
 
+
+            })
+        })
 
      } 
   return (
