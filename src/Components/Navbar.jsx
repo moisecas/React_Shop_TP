@@ -37,6 +37,7 @@ const Navbar = () => {
         <Link to="/"><button>Home</button> </Link>
         <Link to="/signup"><button>Register</button> </Link>
         <Link to="/login"><button>Login</button> </Link>
+        <Link to="/products"><button>Products</button> </Link>
 
         <Link to="/cart">
             <div className='cart-btn'>
@@ -51,7 +52,8 @@ const Navbar = () => {
             <img src={profile} className='profile-icon' />
         </Link>
         <p>{loggedUser ? loggedUser[0].email : "No user"}</p>
-
+        {loggedUser ? <button onClick={()=>{auth.signOut()}}>Logout</button> : null} 
+        
     </nav>
   )
 }

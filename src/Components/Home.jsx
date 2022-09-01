@@ -4,7 +4,7 @@ import Products from './Products'
 import Banner from './Banner'
 import {auth,db} from '../FirebaseConfigs/FirebaseConfig'
 import {collection, doc, getDocs, query, where} from 'firebase/firestore' 
-import { async } from '@firebase/util'
+
 
 
 const Home = () => {
