@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, ref} from 'react'
 import Navbar from './Navbar'
-import {auth,db} from '../FirebaseConfigs/FirebaseConfig'
+import {auth,db,storage} from '../FirebaseConfigs/FirebaseConfig'
 import {collection, doc, getDocs, query, where} from 'firebase/firestore' 
 import '../CSS/AddProduct.css'
 
@@ -71,7 +71,7 @@ const AddProduct = () => {
      }
      const handleAddProduct = (e)=>{ 
         e.preventDefault();
-        const storageRef = ref(storage,`product-images${producttype.toUpperCase()}
+        const storageRef = ref(storage,`product-images${productType.toUpperCase()}
         /${Date.now()}`);    
         console.log(storageRef._location.path); 
 
