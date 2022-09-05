@@ -4,6 +4,8 @@ import Products from './Products'
 import Banner from './Banner'
 import {auth,db} from '../FirebaseConfigs/FirebaseConfig'
 import {collection, doc, getDocs, query, where} from 'firebase/firestore' 
+//import productslider component
+import ProductSlider from './Product-Components/ProductSlider'
 
 
 
@@ -37,7 +39,7 @@ const Home = () => {
     <div>
         <Navbar />
         <Banner />
-        <Products />
+        <ProductSlider  />
         <p>{loggedUser ? loggedUser[0].email : "no data"}</p>
         
     </div>
