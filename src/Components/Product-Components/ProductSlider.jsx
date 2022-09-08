@@ -47,10 +47,12 @@ const ProductSlider = () => {
   return (
     <div>
         <Carousel responsive={responsive} >
-            <div>Item 1</div> 
-            <div>Item 2</div>
-            <div>Item 3</div>
-            <div>Item 4</div>
+            {products.map((product)=>
+            
+            (<Sliderproductcard key={product.id} product={product} />)
+            
+            )}
+            
         </Carousel>;
     </div>
   )

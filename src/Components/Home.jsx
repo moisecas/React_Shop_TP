@@ -39,7 +39,7 @@ const Home = () => {
     <div>
         <Navbar />
         <Banner />
-        <ProductSlider  />
+        <ProductSlider type={'mobile'} />
         <p>{loggedUser ? loggedUser[0].email : "no data"}</p>
         
     </div>
