@@ -16,7 +16,7 @@ const ProductSlider = () => {
     useEffect(()=>{
         const getProducts = () => {
             const productsArray = [];
-            getDocs(collection(db,'products')).then((querySnapshot)=>{
+            getDocs(collection(db,'products-MOBILE')).then((querySnapshot)=>{
                 querySnapshot.forEach((doc)=>{
                     productsArray.push({...doc.data(), id:doc.id});
                 })

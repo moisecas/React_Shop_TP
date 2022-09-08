@@ -1,5 +1,5 @@
 import React from 'react'
-import './ProductContainer.css'
+import '..Product-Components/Productcontainer.css' 
 
 
 
@@ -14,7 +14,8 @@ const ProductContainer = (product) => {
   const saleprice = mrp - extraforfun*mrp 
 
   return (
-    <div className='product-container'>
+    <div>
+      <div className='product-container'>
       <img src={product.product.prodimage} />
       <div className='product-details'>
         <h3>{product.product.prodname}</h3>
@@ -26,6 +27,7 @@ const ProductContainer = (product) => {
         <button className='buy-now'>Buy Now</button> 
 
       </div>
+    </div>
     </div>
   )
 }
