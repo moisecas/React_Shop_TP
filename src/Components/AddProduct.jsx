@@ -1,7 +1,7 @@
-import React, {useState, useEffect, ref} from 'react'
+import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar'
 import {auth,db,storage} from '../FirebaseConfigs/FirebaseConfig'
-import {addDoc, collection, doc, getDocs, query, where} from 'firebase/firestore' 
+import {addDoc, collection, getDocs, query, where} from 'firebase/firestore' 
 import '../CSS/AddProduct.css'
 import { getDownloadURL, uploadBytes } from 'firebase/storage'
 
@@ -14,7 +14,7 @@ const AddProduct = () => {
     const [customerSupport, setCustomerSupport] = useState('');
     const [price, setPrice] = useState('');
     const [warraty, setWarraty] = useState('');
-    const [productImage, setProductImage] = useState(''); 
+    const [productImage, setProductImage] = useState('');  
 
     const [imageError, setImageError] = useState('');
     const [successMsg , setSuccessMsg] = useState('');
@@ -72,27 +72,35 @@ const AddProduct = () => {
      }
      const handleAddProduct = (e)=>{ 
         e.preventDefault();
-        const storageRef = ref(storage,`product-images${productType.toUpperCase()}
-        /${Date.now()}`);    
-        console.log(storageRef._location.path); 
-        
-        uploadBytes(storageRef, productImage)
-        .then(()=>{
-            getDownloadURL(storageRef).then(url => {
-              addDoc(collection(db,`products-${productType.toUpperCase()}`),{ 
-              producttitle,
-              productType,
-              description,
-              brand,
-              customerSupport,
-              price,
-              warraty,
-              productImage: url
-              })
-
-
-            })
+        const productCollectionRef = collection(db,'products-MOBILE');
+        const productData = {
+            producttitle,
+            productType,
+            description,
+            brand,
+            customerSupport,
+            price,
+            warraty,
+            productImage,
+            user: loggedUser[0].email
+        }
+        addDoc(productCollectionRef, productData).then((docRef)=>{
+            console.log("Document written with ID: ", docRef.id);
+            setSuccessMsg('Product added successfully');
+            setProductTitle('');
+            setProductType('');
+            setDescription('');
+            setBrand('');
+            setCustomerSupport('');
+            setPrice('');
+            setWarraty('');
+            setProductImage('');
+        }).catch((error)=>{
+            console.error("Error adding document: ", error);
+            setUploadError('Error adding document');
         })
+        
+        
 
      } 
   return (
